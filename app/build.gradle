@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'calces.screen'
+    id 'kotlin-kapt'
+}
+
+screen {
+    dimens {
+        designPx 720
+        smallesWidths 320, 360, 384, 392, 400, 410, 411, 428, 432, 480, 533, 592, 600
+        scale 3            //保留小数位，默认为2
+        scaleMode BigDecimal.ROUND_HALF_UP  //小数保留的方式
+        auto true
+    }
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.qy.mdpoint"
+        minSdk 30
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.github.weikaiyun.SFragmentation:fragmentation:1.8.4'
+    implementation 'com.github.DylanCaiCoding.ViewBindingKTX:viewbinding-base:2.0.5'
+    // 基础依赖包，必须要依赖
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    // kotlin扩展（可选）
+    implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.kaopiz:kprogresshud:1.0.2'
+    implementation 'com.github.shaoshuai904:XStyleDialog:2.0.5'
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
+    implementation 'com.blankj:utilcodex:1.31.0'
+    implementation 'com.github.AriesHoo.UIWidget:widget-core:3.2.25'
+
+    implementation "androidx.room:room-ktx:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+//Room不能在主线程即UI线程上操作，可以使用lifecycleScope在协程作用域中操作
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.github.loper7:DateTimePicker:0.6.3'
+}
